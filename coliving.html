@@ -1,29 +1,28 @@
-﻿<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bairoom - Inicio</title>
 
     <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
 
-</head>
-
-
-
-<body>
-
-   <header class="hero-bairoom">
-  <!-- VIDEO / IMAGEN -->
+  <body>
+    <header class="hero-bairoom">
+      <!-- VIDEO / IMAGEN -->
       <div class="hero-video-wrapper">
-        <video class="hero-video" autoplay muted loop playsinline>
-          <source src="video/coliving.mp4" type="video/mp4" />
-        </video>
+        <img class="hero-video" src="img/coliving.png" alt="Coliving Bairoom" />
       </div>
 
       <div class="hero-inner container">
@@ -36,8 +35,8 @@
               alt="Bairoom"
             />
           </a>
-  
-          <!-- BOTÓN HAMBURGUESA -->
+
+          <!-- BOT�N HAMBURGUESA -->
           <button
             class="navbar-toggler border-0"
             type="button"
@@ -49,16 +48,25 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="mainNavbar"
+          >
             <ul class="navbar-nav align-items-lg-center gap-lg-4 text-center">
               <li class="nav-item">
-                <a class="nav-link fw-bold text-white" href="sobrenosotros.html">
+                <a
+                  class="nav-link fw-bold text-white"
+                  href="sobrenosotros.html"
+                >
                   SOBRE NOSOTROS
                 </a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link fw-bold text-white active" href="coliving.html">
+                <a
+                  class="nav-link fw-bold text-white active"
+                  href="coliving.html"
+                >
                   COLIVING
                 </a>
               </li>
@@ -76,7 +84,7 @@
               </li>
 
               <li class="nav-item d-none d-lg-block ms-lg-3">
-                <a href="login.html" class="btn btn-session">Iniciar sesión</a>
+                <a href="login.html" class="btn btn-session">Iniciar sesi�n</a>
               </li>
 
               <li class="nav-item d-lg-none mt-3">
@@ -87,187 +95,176 @@
             </ul>
           </div>
         </nav>
-
       </div>
     </header>
 
-
     <nav aria-label="breadcrumb" class="visually-hidden">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item">
-      <a href="index.html">Inicio</a>
-    </li>
-    <li class="breadcrumb-item active" aria-current="page">
-      Coliving
-    </li>
-  </ol>
-</nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="index.html">Inicio</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">Coliving</li>
+      </ol>
+    </nav>
 
-
-    
-
-    <!-- TÍTULO FLOTANTE SOBRE EL FORMULARIO -->
+    <!-- T�TULO FLOTANTE SOBRE EL FORMULARIO -->
     <div class="search-title text-center">
-        <strong class="titulo-hogar">¡Encuentra tu nuevo hogar, en un click!</strong>
+      <strong class="titulo-hogar"
+        >�Encuentra tu nuevo hogar, en un click!</strong
+      >
     </div>
 
     <!-- FORMULARIO FLOTANTE -->
     <div class="search-floating container">
-        <form class="search-box shadow-lg p-4 rounded-4">
-            <div class="row g-3 align-items-end">
+      <form class="search-box shadow-lg p-4 rounded-4">
+        <div class="row g-3 align-items-end">
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">Ciudad</label>
+            <input type="text" class="form-control" placeholder="Ej: Elche" />
+          </div>
 
-                <div class="col-md-3">
-                    <label class="form-label fw-semibold">Ciudad</label>
-                    <input type="text" class="form-control" placeholder="Ej: Elche">
-                </div>
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">Entrada</label>
+            <input type="date" class="form-control" />
+          </div>
 
-                <div class="col-md-3">
-                    <label class="form-label fw-semibold">Entrada</label>
-                    <input type="date" class="form-control">
-                </div>
+          <div class="col-md-3">
+            <label class="form-label fw-semibold">Salida</label>
+            <input type="date" class="form-control" />
+          </div>
 
-                <div class="col-md-3">
-                    <label class="form-label fw-semibold">Salida</label>
-                    <input type="date" class="form-control">
-                </div>
-
-                <div class="col-md-3 d-grid">
-                    <button type="submit" class="btn btn-primary btn-bairoom">Buscar habitación</button>
-                </div>
-
-            </div>
-        </form>
+          <div class="col-md-3 d-grid">
+            <button type="submit" class="btn btn-primary btn-bairoom">
+              Buscar habitaci�n
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
 
-
-
-   
     <!-- Aqi va todo el contenido de explicacion del proceso de alquilar y los beneficios, y tambien algo sobre el producto (app web Bairoon)-->
     <section class="steps-section">
-        <h2 class="steps-title">
-            Solo necesitas 4 pasos para empezar a vivir sin complicaciones.
-        </h2>
+      <h2 class="steps-title">
+        Solo necesitas 4 pasos para empezar a vivir sin complicaciones.
+      </h2>
 
-        <div class="steps-list">
-
-            <div class="step step-1">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <strong>Elige ciudad y habitación</strong>
-                    <p>Según tu estilo de vida y fechas disponibles.</p>
-                </div>
-            </div>
-
-            <div class="step step-2">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <strong>Envía tu solicitud</strong>
-                    <p>Proceso online, rápido y sin burocracia.</p>
-                </div>
-            </div>
-
-            <div class="step step-3">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <strong>Validamos tu perfil</strong>
-                    <p>Confirmamos la estancia y el encaje con la vivienda.</p>
-                </div>
-            </div>
-
-            <div class="step step-4">
-                <div class="step-number">4</div>
-                <div class="step-content">
-                    <strong>Entra a vivir</strong>
-                    <p>Gestiona contratos, pagos y servicios desde tu panel.</p>
-                </div>
-            </div>
-
+      <div class="steps-list">
+        <div class="step step-1">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <strong>Elige ciudad y habitaci�n</strong>
+            <p>Seg�n tu estilo de vida y fechas disponibles.</p>
+          </div>
         </div>
+
+        <div class="step step-2">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <strong>Env�a tu solicitud</strong>
+            <p>Proceso online, r�pido y sin burocracia.</p>
+          </div>
+        </div>
+
+        <div class="step step-3">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <strong>Validamos tu perfil</strong>
+            <p>Confirmamos la estancia y el encaje con la vivienda.</p>
+          </div>
+        </div>
+
+        <div class="step step-4">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <strong>Entra a vivir</strong>
+            <p>Gestiona contratos, pagos y servicios desde tu panel.</p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="container panel-preview">
-        <div class="text-center mb-4">
-            <h2 class="fw-bold">Vista previa de la App (Inquilinos)</h2>
-            <p class="text-muted">
-                Todo lo importante de tu estancia en un solo lugar, con claridad y seguimiento.
-            </p>
-        </div>
+      <div class="text-center mb-4">
+        <h2 class="fw-bold">Vista previa de la App (Inquilinos)</h2>
+        <p class="text-muted">
+          Todo lo importante de tu estancia en un solo lugar, con claridad y
+          seguimiento.
+        </p>
+      </div>
 
-        <div class="panel-frame">
-            <div class="panel-grid">
-                <div class="panel-card panel-wide panel-card--accent">
-                    <div class="d-flex justify-content-between align-items-center">
-                        <h4>Reserva activa</h4>
-                        <span class="panel-badge panel-badge--good">
-                            <i class="bi bi-shield-check"></i> Verificada
-                        </span>
-                    </div>
-                    <strong>Habitación exterior · Centro</strong>
-                    <span>Entrada 01/04 · Salida 30/06</span>
-                    <ul class="panel-list">
-                        <li><i class="bi bi-file-earmark-text"></i> Contrato firmado</li>
-                        <li><i class="bi bi-credit-card"></i> Próximo pago: 01/05</li>
-                        <li><i class="bi bi-tools"></i> Incidencias: 1 en curso</li>
-                    </ul>
-                </div>
-                <div class="panel-card panel-narrow">
-                    <h4>Estado de pagos</h4>
-                    <strong>OK</strong>
-                    <span>Último pago registrado</span>
-                </div>
-                <div class="panel-card panel-narrow">
-                    <h4>Mensajería</h4>
-                    <strong>2 nuevos</strong>
-                    <span>Actualizaciones del equipo</span>
-                </div>
-                <div class="panel-card panel-wide">
-                    <h4>Checklist de entrada</h4>
-                    <ul class="panel-list">
-                        <li><i class="bi bi-check-circle-fill"></i> Documentación subida</li>
-                        <li><i class="bi bi-check-circle-fill"></i> Fianza confirmada</li>
-                        <li><i class="bi bi-clock"></i> Visita pendiente</li>
-                    </ul>
-                </div>
+      <div class="panel-frame">
+        <div class="panel-grid">
+          <div class="panel-card panel-wide panel-card--accent">
+            <div class="d-flex justify-content-between align-items-center">
+              <h4>Reserva activa</h4>
+              <span class="panel-badge panel-badge--good">
+                <i class="bi bi-shield-check"></i> Verificada
+              </span>
             </div>
+            <strong>Habitaci�n exterior � Centro</strong>
+            <span>Entrada 01/04 � Salida 30/06</span>
+            <ul class="panel-list">
+              <li><i class="bi bi-file-earmark-text"></i> Contrato firmado</li>
+              <li><i class="bi bi-credit-card"></i> Pr�ximo pago: 01/05</li>
+              <li><i class="bi bi-tools"></i> Incidencias: 1 en curso</li>
+            </ul>
+          </div>
+          <div class="panel-card panel-narrow">
+            <h4>Estado de pagos</h4>
+            <strong>OK</strong>
+            <span>�ltimo pago registrado</span>
+          </div>
+          <div class="panel-card panel-narrow">
+            <h4>Mensajer�a</h4>
+            <strong>2 nuevos</strong>
+            <span>Actualizaciones del equipo</span>
+          </div>
+          <div class="panel-card panel-wide">
+            <h4>Checklist de entrada</h4>
+            <ul class="panel-list">
+              <li>
+                <i class="bi bi-check-circle-fill"></i> Documentaci�n subida
+              </li>
+              <li><i class="bi bi-check-circle-fill"></i> Fianza confirmada</li>
+              <li><i class="bi bi-clock"></i> Visita pendiente</li>
+            </ul>
+          </div>
         </div>
+      </div>
     </section>
-
-
 
     <!-- FOOTER BAIROOM -->
     <footer class="footer-bairoom mt-5 py-4">
-        <div class="container text-center">
-            <!-- LOGO -->
-            <div class="mb-3">
-                <a href="index.html">
-                    <img src="img/logo_blanco.png" alt="Bairoom" class="footer-logo">
-                </a>
-            </div>
-            <!-- ENLACES LEGALES -->
-            <div class="footer-links mb-3">
-                <a href="#">Legal</a>
-                <span class="mx-2">·</span>
-                <a href="#">Cookies</a>
-                <span class="mx-2">·</span>
-                <a href="#">Privacidad</a>
-            </div>
-
-            <!-- REDES SOCIALES -->
-
-            <div class="footer-social">
-                <a href="https://instagram.com/bairoom.rent"><i class="bi bi-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/jesusbailen"><i class="bi bi-linkedin"></i></a>
-                <a href="#"><i class="bi bi-tiktok"></i></a>
-            </div>
-
+      <div class="container text-center">
+        <!-- LOGO -->
+        <div class="mb-3">
+          <a href="index.html">
+            <img src="img/logo_blanco.png" alt="Bairoom" class="footer-logo" />
+          </a>
         </div>
+        <!-- ENLACES LEGALES -->
+        <div class="footer-links mb-3">
+          <a href="#">Legal</a>
+          <span class="mx-2">�</span>
+          <a href="#">Cookies</a>
+          <span class="mx-2">�</span>
+          <a href="#">Privacidad</a>
+        </div>
+
+        <!-- REDES SOCIALES -->
+
+        <div class="footer-social">
+          <a href="https://instagram.com/bairoom.rent"
+            ><i class="bi bi-instagram"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/jesusbailen"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+          <a href="#"><i class="bi bi-tiktok"></i></a>
+        </div>
+      </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
+  </body>
 </html>
-
-
-
-
