@@ -1,0 +1,1483 @@
+﻿/* 
+  Estilos personalizados para identidad visual y contraste.
+  Bootstrap se utiliza como base estructural y de componentes.
+*/
+
+/*  VARIABLES DE COLOR */
+:root {
+  --verde-menta: #a4d4ae;
+  --azul: #4bb4e6;
+  --gris-oscuro: #2e2e2e;
+}
+
+/* HERO PRINCIPAL
+ */
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #f7f7f7;
+}
+
+.section-block {
+  margin-top: 4rem !important;
+  margin-bottom: 4rem !important;
+}
+
+.hero-bairoom {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  margin-top: 20px;
+}
+
+/* El vídeo dentro de su wrapper */
+.hero-video-wrapper,
+.sobrenosotros-video-wrapper,
+.coliving-video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 98%;
+  max-width: 1700px;
+  height: 100%;
+  border-radius: 28px;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-video,
+.sobrenosotros-video,
+.coliving-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75);
+}
+
+/* Interior del hero (logo + menu login) */
+.hero-inner {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+
+  width: 94%;
+  max-width: 1500px;
+  padding: 20px 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* LOGO */
+.hero-logo-img {
+  width: 140px;
+}
+
+/* Menú cápsula */
+.hero-menu {
+  display: flex;
+  gap: 30px;
+  background: var(--verde-menta);
+  padding: 12px 35px;
+  border-radius: 40px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.hero-link {
+  text-decoration: none;
+  color: var(--gris-oscuro);
+  font-weight: 500;
+}
+
+/* Botón iniciar sesión */
+.btn-session {
+  border: 2px solid var(--azul);
+  padding: 8px 22px;
+  color: var(--azul);
+  border-radius: 30px;
+  text-decoration: none;
+}
+
+/* MENÚ MÓVIL*/
+
+.mobile-menu-btn {
+  background: white;
+  border: 2px solid var(--azul);
+  color: var(--azul);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 1.3rem;
+}
+
+/* Mobile menu fullscreen */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  background: #ffffff;
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem;
+}
+
+.mobile-menu.active {
+  display: flex !important;
+}
+
+.mobile-menu-logo {
+  width: 48px;
+  height: auto;
+  margin-top: 10px;
+  margin-left: 5px;
+  filter: brightness(1);
+}
+
+.mobile-menu-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.close-menu {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: #222;
+  cursor: pointer;
+}
+
+.mobile-menu-links {
+  margin: auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.2rem;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.mobile-menu-links a {
+  display: block;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--gris-oscuro);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  margin: 1rem 0;
+}
+
+.mobile-menu-links a:hover {
+  color: var(--azul);
+}
+
+.btn-mobile-login {
+  width: 100%;
+  max-width: 360px;
+  margin: 2rem auto 1.5rem;
+  padding: 14px;
+  background: #1f2933;
+  color: #fff;
+  text-align: center;
+  border-radius: 999px;
+  font-size: 1rem;
+  text-decoration: none;
+}
+
+/* BOTONES CENTRADOS */
+.mobile-menu-actions {
+  text-align: center;
+  width: 100%;
+}
+
+.mobile-menu-actions .btn {
+  width: 80%;
+  margin: 0.5rem auto;
+}
+
+.mobile-menu-social {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.mobile-menu-social i {
+  font-size: 1.3rem;
+  margin: 0 0.5rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .hero-menu,
+  .btn-session {
+    display: none !important;
+  }
+}
+
+@media (min-width: 992px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+}
+
+.section-bairoom {
+  max-width: 850px;
+}
+
+.bairoom-title {
+  font-weight: 600;
+  color: var(--gris-oscuro);
+  margin-bottom: 20px;
+  font-size: 2rem;
+}
+
+.bairoom-text {
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.65;
+  color: #444;
+}
+
+.text-primary {
+  color: var(--azul) !important;
+  /* azul corporativo */
+}
+
+.lead {
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.card-bairoom {
+  transition: all 0.3s ease;
+}
+
+.card-bairoom:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.descripcion-bairoom {
+  color: #555;
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.65;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Animación suave al aparecer */
+.card-bairoom {
+  opacity: 0;
+  animation: fadeInUp 0.8s forwards ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.card-flow:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+.steps-list li {
+  font-size: 1.05rem;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  color: #555;
+  line-height: 1.5;
+}
+
+.step-icon {
+  font-size: 1.5rem;
+  color: #2e2e2e;
+  margin-right: 10px;
+}
+
+.steps-container {
+  max-width: 700px;
+  margin: 0 auto 25px;
+  display: grid;
+  gap: 16px;
+}
+
+.step-box {
+  display: flex;
+  align-items: center;
+  background: var(--step-color);
+  gap: 12px;
+  padding: 18px;
+  border-radius: 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.step-box:hover {
+  transform: translateX(6px);
+}
+
+.step-number {
+  background: white;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  margin-right: 18px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  border: 2px solid rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.step-text {
+  flex: 1;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .step-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    text-align: left;
+  }
+
+  .step-number {
+    margin: 0;
+  }
+}
+
+/* FOOTER BAIROOM */
+.mobile-menu-footer,
+.footer-bairoom {
+  background: #9ec9e2;
+  color: var(--gris-oscuro);
+  border-top: 1px solid #e6e6e6;
+  text-align: center;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.footer-logo {
+  width: 80px;
+  height: auto;
+  opacity: 0.9;
+}
+
+.mobile-menu-footer,
+.footer-links a {
+  font-family: "Poppins", sans-serif;
+  color: var(--gris-oscuro);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+  opacity: 0.7;
+}
+
+/* ICONOS DE REDES */
+.footer-social a {
+  font-size: 1.4rem;
+  color: var(--gris-oscuro);
+  transition: opacity 0.2s ease;
+}
+
+.footer-social a:hover {
+  opacity: 0.7;
+}
+
+.carousel-img {
+  height: 420px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* Estilo suave para indicadores */
+.carousel-indicators [data-bs-target] {
+  background-color: #9ec9e2;
+  /* Azul Bairoom */
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.carousel-indicators .active {
+  background-color: #3b74ba;
+}
+
+/* Texto del caption */
+.carousel-caption h5 {
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.carousel-caption p {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* 
+   BOTÓN BAIROOM (FINAL)
+ */
+
+.btn-bairoom {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 28px;
+  border-radius: 999px;
+  border: none;
+
+  background: linear-gradient(135deg, #1e88e5, #4fc3f7);
+  color: #ffffff;
+
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-bairoom:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(30, 136, 229, 0.35);
+}
+
+.btn-bairoom:focus {
+  box-shadow: none;
+}
+
+/* Ajuste REAL del título flotante */
+.search-title {
+  position: relative;
+  z-index: 20;
+  /* encima del vídeo y encima del formulario */
+  margin-top: -30px;
+  /* lo acerca al borde inferior del vídeo sin invadir el form */
+  margin-bottom: 10px;
+  /* separación antes del formulario */
+}
+
+.titulo-hogar {
+  background: white;
+  padding: 10px 28px;
+  border-radius: 40px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  display: inline-block;
+}
+
+/* Ajuste del formulario flotante para evitar solapamiento */
+.search-floating {
+  position: relative;
+  z-index: 10;
+  margin-top: 0px;
+}
+
+.search-box {
+  background: white;
+  border-radius: 20px;
+}
+
+.role-chooser {
+  max-width: 1200px;
+  margin: 2.5rem auto 1.5rem;
+  padding: 2.5rem 2rem 2rem;
+  border-radius: 32px;
+  background: linear-gradient(145deg, #ffffff 0%, #f4f8fb 100%);
+  box-shadow: 0 22px 60px rgba(15, 30, 55, 0.08);
+}
+
+.role-chooser-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #0f1e37;
+  text-align: center;
+  margin-bottom: 0.4rem;
+}
+
+.role-chooser-subtitle {
+  text-align: center;
+  color: #516172;
+  margin-bottom: 2.2rem;
+}
+
+.role-card {
+  position: relative;
+  padding: 2rem;
+  border-radius: 24px;
+  background: #ffffff;
+  border: 1px solid #e0e9f2;
+  box-shadow: 0 18px 45px rgba(15, 30, 55, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  height: 100%;
+}
+
+.role-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 70px rgba(15, 30, 55, 0.12);
+}
+
+.role-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 1rem;
+}
+
+.role-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.role-card--tenant .role-tag {
+  background: rgba(164, 212, 174, 0.22);
+  color: #1c5530;
+}
+
+.role-card--owner .role-tag {
+  background: rgba(75, 180, 230, 0.18);
+  color: #0f3c5f;
+}
+
+.role-card--tenant .role-icon {
+  background: rgba(164, 212, 174, 0.28);
+  color: #1c5530;
+}
+
+.role-card--owner .role-icon {
+  background: rgba(75, 180, 230, 0.24);
+  color: #0f3c5f;
+}
+
+.role-card h3 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f1e37;
+  margin-bottom: 0.6rem;
+}
+
+.role-card p {
+  color: #4f5f6f;
+  line-height: 1.6;
+  margin-bottom: 1.4rem;
+}
+
+.role-meta {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.6rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.role-meta li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #3b4b5c;
+  font-weight: 500;
+}
+
+.role-meta i {
+  color: var(--azul);
+}
+
+.role-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.role-actions .btn {
+  border-radius: 999px;
+}
+
+.panel-preview {
+  margin: 4rem auto;
+}
+
+.panel-frame {
+  border-radius: 28px;
+  border: 1px solid #e3ecf5;
+  background: radial-gradient(circle at top left, #f5fbff, #ffffff 60%);
+  box-shadow: 0 24px 70px rgba(15, 30, 55, 0.08);
+  padding: 1.7rem;
+}
+
+.panel-nav {
+  background: #f1f5f9;
+  border-radius: 999px;
+  padding: 6px;
+  display: inline-flex;
+  gap: 6px;
+}
+
+.panel-nav .nav-link {
+  border-radius: 999px;
+  color: #1f2a37;
+  font-weight: 600;
+  padding: 8px 18px;
+}
+
+.panel-nav .nav-link.active {
+  background: #0f1e37;
+  color: #ffffff;
+}
+
+.panel-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.panel-card {
+  background: #ffffff;
+  border: 1px solid #e6eef6;
+  border-radius: 18px;
+  padding: 1rem 1.2rem;
+  box-shadow: 0 12px 30px rgba(15, 30, 55, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.panel-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 30, 55, 0.1);
+}
+
+.panel-card h4 {
+  font-size: 0.95rem;
+  color: #5b6b7b;
+  margin-bottom: 0.4rem;
+}
+
+.panel-card strong {
+  font-size: 1.2rem;
+  color: #0f1e37;
+}
+
+.panel-card span {
+  color: #6b7a89;
+  font-size: 0.9rem;
+}
+
+.panel-card--accent {
+  border-left: 4px solid #4bb4e6;
+}
+
+.panel-wide {
+  grid-column: span 8;
+}
+
+.panel-narrow {
+  grid-column: span 4;
+}
+
+.panel-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.panel-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #425466;
+  font-size: 0.95rem;
+}
+
+.panel-list i {
+  color: var(--azul);
+}
+
+.panel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(75, 180, 230, 0.15);
+  color: #0f3c5f;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.panel-badge--good {
+  background: rgba(46, 204, 113, 0.18);
+  color: #18643a;
+}
+
+.panel-badge--warn {
+  background: rgba(247, 183, 49, 0.22);
+  color: #7a4f08;
+}
+
+@media (max-width: 992px) {
+  .panel-wide,
+  .panel-narrow {
+    grid-column: span 12;
+  }
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* HERO IMAGEN SOBRE NOSOTROS */
+.hero-image-container {
+  width: 100%;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image {
+  width: 80%;
+  max-width: 1100px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* VIDEO DEMO APP (INDEX) */
+.product-video-wrapper {
+  max-width: 520px;
+  margin: 0 auto;
+  border-radius: 22px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+}
+
+.product-video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/*  Sección Sobre Nosotros  */
+
+.section-text {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  max-width: 900px;
+}
+
+.sobre-wrapper {
+  max-width: 1100px !important;
+}
+
+.spacer-xl {
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+}
+
+/* CARD BASE BAIROOM */
+.card {
+  border-radius: 20px;
+  border: 1px solid #e9eef5;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Cards estilo Bairoom con efecto Uiverse */
+
+.card-sobre {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.2rem;
+  border: 2px solid #e3e5e8;
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.3s ease,
+    border-radius 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  box-shadow:
+    inset 0 -2rem 3rem rgba(0, 0, 0, 0.03),
+    0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card-sobre:hover {
+  border-color: var(--azul);
+  transform: translateY(-6px);
+  border-radius: 28px;
+  box-shadow:
+    0 0 22px rgba(0, 139, 248, 0.45),
+    0 12px 28px rgba(0, 0, 0, 0.25);
+}
+
+.subhero-text p {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.65;
+  margin-bottom: 2rem;
+}
+
+.section-divider-bairoom {
+  height: 3px;
+  width: 220px;
+  margin: 2.5rem auto;
+  border-radius: 6px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #00c2d8,
+    #0077ff,
+    transparent
+  );
+}
+
+/*  EQUIPO */
+
+.titulo-seccion {
+  font-size: 2.4rem;
+}
+
+.subtitulo-seccion {
+  font-size: 1.1rem;
+  color: #555;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.equipo-card {
+  transition: 0.3s ease;
+}
+
+.equipo-card:hover {
+  transform: translateY(-4px);
+  border-color: #8ecae6;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.foto-equipo {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border: 3px solid #cce7f5;
+}
+
+.descripcion-equipo {
+  color: #444;
+  line-height: 1.6;
+}
+
+/*  COLABORADORES  */
+
+.colab-logo {
+  width: 140px;
+  opacity: 0.7;
+  transition: 0.3s ease;
+  filter: grayscale(100%);
+}
+
+.colab-logo:hover {
+  opacity: 1;
+  transform: scale(1.06);
+  filter: grayscale(0%);
+}
+
+.logo-header,
+.logo-footer {
+  cursor: pointer;
+}
+
+.logo-header:hover,
+.logo-footer:hover {
+  transform: scale(1.05);
+  transition: 0.2s ease;
+}
+
+/* ===== STEPS SECTION ===== */
+
+.steps-section {
+  max-width: 900px;
+  margin: 6rem auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.steps-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.steps-subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  margin-bottom: 3.5rem;
+}
+
+/* LISTA */
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* STEP CARD */
+.step {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  padding: 2.2rem 2.5rem;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  text-align: left;
+}
+
+.step:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 25px 55px rgba(0, 0, 0, 0.15);
+}
+
+/* NUMERO */
+.step-number {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: white;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+/* TEXTO */
+.step-content strong {
+  font-size: 1.25rem;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.step-content p {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #444;
+  line-height: 1.5;
+}
+
+/* COLORES BAIROOM */
+.step-1 {
+  background: linear-gradient(135deg, #e8f3ff, #f5faff);
+}
+
+.step-1 .step-number {
+  background: #2f80ed;
+}
+
+.step-2 {
+  background: linear-gradient(135deg, #eafcff, #f6feff);
+}
+
+.step-2 .step-number {
+  background: #56ccf2;
+}
+
+.step-3 {
+  background: linear-gradient(135deg, #edf4ff, #f7f9ff);
+}
+
+.step-3 .step-number {
+  background: #2d9cdb;
+}
+
+.step-4 {
+  background: linear-gradient(135deg, #e9f0ff, #f4f6ff);
+}
+
+.step-4 .step-number {
+  background: #1c6ed5;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .step {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .step-number {
+    margin-bottom: 0.8rem;
+  }
+}
+
+/* ===============================
+   CONTACTO BAIROOM
+=============================== */
+
+.contacto-bairoom {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f9fc 100%);
+}
+
+.contact-card {
+  box-shadow: 0 20px 50px rgba(15, 30, 55, 0.08);
+}
+
+.contact-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #0f1e37;
+}
+
+.contact-subtitle {
+  color: #6c7a89;
+  font-size: 1rem;
+}
+
+.bairoom-input {
+  border-radius: 14px;
+  padding: 14px 16px;
+  border: 1px solid #dde6ee;
+  font-size: 0.95rem;
+}
+
+.bairoom-input:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+}
+
+/* ==============================
+   LOGIN BAIROOM
+============================== */
+
+.login-body {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f4f9fc, #e9f2f8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Inter", sans-serif;
+}
+
+.login-wrapper {
+  width: 100%;
+  padding: 20px;
+}
+
+.login-card {
+  max-width: 420px;
+  margin: auto;
+  background: white;
+  padding: 40px 35px;
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+}
+
+.login-logo {
+  width: 120px;
+}
+
+.login-title {
+  font-weight: 700;
+  font-size: 1.8rem;
+  color: #0f1e37;
+}
+
+.login-subtitle {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-bottom: 30px;
+}
+
+.login-link {
+  font-size: 0.9rem;
+  color: var(--azul);
+  text-decoration: none;
+}
+
+.login-link:hover {
+  text-decoration: underline;
+}
+
+.btn-login {
+  background: linear-gradient(90deg, #2bb0ed, #1e90ff);
+  border: none;
+  padding: 14px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 1rem;
+  color: white;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.btn-login:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(30, 144, 255, 0.35);
+}
+
+.login-footer {
+  font-size: 0.9rem;
+  color: #6b7280;
+}
+
+/* ==========================
+   PROPIETARIOS (LANDING)
+========================== */
+
+.bairoom-owner-hero {
+  margin-top: 110px;
+  margin-bottom: 40px;
+  max-width: 980px;
+}
+
+.owner-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #0f1e37;
+  letter-spacing: -0.5px;
+}
+
+.owner-subtitle {
+  margin: 14px auto 0;
+  max-width: 780px;
+  color: #51606f;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.owner-btn-outline {
+  border-radius: 999px;
+  padding: 12px 22px;
+}
+
+.owner-card {
+  border-radius: 22px;
+  box-shadow: 0 18px 50px rgba(15, 30, 55, 0.06);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.owner-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(75, 180, 230, 0.55);
+  box-shadow: 0 26px 70px rgba(15, 30, 55, 0.1);
+}
+
+.owner-card-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 18px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(
+    135deg,
+    rgba(75, 180, 230, 0.18),
+    rgba(164, 212, 174, 0.22)
+  );
+  color: #0f1e37;
+  font-size: 1.4rem;
+  margin-bottom: 14px;
+}
+
+.owner-card-title {
+  font-size: 1.2rem;
+  font-weight: 650;
+  margin-bottom: 8px;
+  color: #0f1e37;
+}
+
+.owner-card-text {
+  margin: 0;
+  color: #5a6a79;
+  line-height: 1.6;
+}
+
+.owner-panel {
+  background: linear-gradient(180deg, #ffffff, #f4f9fc);
+  border: 1px solid #e9eef5;
+  border-radius: 26px;
+  box-shadow: 0 22px 60px rgba(15, 30, 55, 0.07);
+}
+
+.owner-panel-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f1e37;
+}
+
+.owner-panel-text {
+  color: #556575;
+  line-height: 1.7;
+}
+
+.owner-panel-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.owner-panel-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #334155;
+  font-weight: 500;
+}
+
+.owner-panel-list i {
+  color: var(--azul);
+  font-size: 1.15rem;
+}
+
+.owner-mock {
+  border-radius: 22px;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #e9eef5;
+}
+
+.owner-mock-top {
+  height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  background: #f3f6fb;
+  border-bottom: 1px solid #e9eef5;
+}
+
+.owner-mock-top span {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #cbd5e1;
+}
+
+.owner-mock-body {
+  padding: 18px;
+  display: grid;
+  gap: 12px;
+}
+
+.owner-metric {
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #ffffff, #f7fbff);
+  border: 1px solid #e9eef5;
+}
+
+.owner-metric p {
+  color: #6b7a89;
+  font-size: 0.9rem;
+}
+
+.owner-metric h3 {
+  color: #0f1e37;
+  font-weight: 750;
+}
+
+.owner-final {
+  border-radius: 26px;
+  background: linear-gradient(
+    135deg,
+    rgba(164, 212, 174, 0.3),
+    rgba(75, 180, 230, 0.22)
+  );
+  border: 1px solid rgba(75, 180, 230, 0.25);
+  box-shadow: 0 22px 60px rgba(15, 30, 55, 0.06);
+}
+
+.owner-final-title {
+  font-size: 2rem;
+  font-weight: 750;
+  color: #0f1e37;
+}
+
+.owner-final-text {
+  color: #445566;
+  margin-top: 10px;
+  margin-bottom: 22px;
+}
+
+/* Ajuste fino: evita que el bloque de intro se coma el hero en pantallas pequeñas */
+@media (max-width: 768px) {
+  .bairoom-owner-hero {
+    margin-top: 90px;
+  }
+
+  .owner-title {
+    font-size: 2.1rem;
+  }
+}
+
+.owner-panel-content {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.owner-panel-list {
+  margin-bottom: 2.5rem;
+}
+
+/* Breadcrumb discreto en hero */
+.breadcrumb-hero {
+  position: absolute;
+  bottom: 18px;
+  left: 28px;
+  z-index: 3;
+}
+
+.breadcrumb-hero .breadcrumb {
+  background: rgba(255, 255, 255, 0.7);
+  padding: 4px 10px;
+  border-radius: 14px;
+  font-size: 0.75rem;
+  margin-bottom: 0;
+}
+
+.breadcrumb-hero .breadcrumb-item + .breadcrumb-item::before {
+  content: "/";
+}
+
+.breadcrumb-hero a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.hero-link.active {
+  font-weight: 700;
+  position: relative;
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.hero-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 18px;
+  height: 2px;
+  background-color: #0d6efd;
+  border-radius: 2px;
+}
+
+.mobile-menu-links a.active {
+  font-weight: 600;
+  color: #0d6efd;
+}
+
+.mobile-menu-links a.active::before {
+  content: "• ";
+}
+
+.navbar-toggler {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  border: none;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}
+
+.header-bairoom-simple {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(20, 40, 60, 0.65); /* azul oscuro Bairoom */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar .nav-link {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.navbar .nav-link:hover {
+  color: #8fd3ff;
+}
+
+/* LINK ACTIVO NAVBAR (DESKTOP + MÓVIL) */
+.navbar .nav-link.active {
+  font-weight: 700;
+  position: relative;
+}
+
+/* subrayado elegante tipo Bairoom */
+.navbar .nav-link.active::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  transform: translateX(-50%);
+  width: 22px;
+  height: 2px;
+  background-color: #8fd3ff;
+  border-radius: 2px;
+}
+
+
+
+
+

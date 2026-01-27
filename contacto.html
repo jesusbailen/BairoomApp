@@ -1,0 +1,258 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <header class="hero-bairoom">
+      <!-- VIDEO / IMAGEN -->
+      <div class="hero-video-wrapper">
+        <video class="hero-video" autoplay muted loop playsinline>
+          <source src="video/hero.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <div class="hero-inner container">
+        <nav class="navbar navbar-expand-lg w-100">
+          <!-- LOGO -->
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="img/logo_blanco.png"
+              class="hero-logo-img"
+              alt="Bairoom"
+            />
+          </a>
+
+
+
+          <button
+            class="navbar-toggler border-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse justify-content-end" id="mainNavbar">
+            <ul class="navbar-nav align-items-lg-center gap-lg-4 text-center">
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-white" href="sobrenosotros.html">
+                  SOBRE NOSOTROS
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-white" href="coliving.html">
+                  COLIVING
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-white" href="propietarios.html">
+                  PROPIETARIOS
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-white active" href="contacto.html">
+                  CONTACTO
+                </a>
+              </li>
+
+              <li class="nav-item d-none d-lg-block ms-lg-3">
+                <a href="login.html" class="btn btn-session">Iniciar sesión</a>
+              </li>
+
+              <li class="nav-item d-lg-none mt-3">
+                <a href="login.html" class="btn btn-primary w-100">
+                  Iniciar sesión
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+
+    <!-- TÍTULO FLOTANTE SOBRE EL FORMULARIO -->
+    <div class="search-title text-center">
+        <strong class="titulo-hogar">Contáctanos, estaremos encantados de poder ayudarte.</strong>
+    </div>
+
+
+    <!-- MENÚ MÓVIL -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <!-- Header -->
+            <div class="mobile-menu-header">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Bairoom" class="mobile-menu-logo">
+                </a>
+                <span class="close-menu" id="closeMenu">✕</span>
+            </div>
+        </div>
+
+        <nav class="mobile-menu-links">
+            <a href="sobrenosotros.html">Sobre nosotros</a>
+            <a href="coliving.html">Coliving</a>
+            <a href="propietarios.html">Propietarios</a>
+            <a href="contacto.html" class="active">Contacto</a>
+        </nav>
+
+        <a href="login.html" class="btn-mobile-login">Iniciar sesión</a>
+
+
+
+        <!-- FOOTER BAIROOM -->
+        <footer class="footer-bairoom mt-5 py-4">
+            <div class="container text-center">
+
+                <!-- LOGO -->
+                <div class="mb-3">
+                    <a href="index.html">
+                        <img src="img/logo.png" alt="Bairoom" class="footer-logo">
+                    </a>
+                </div>
+
+                <!-- ENLACES LEGALES -->
+                <div class="footer-links mb-3">
+                    <a href="#">Legal</a>
+                    <span class="mx-2">·</span>
+                    <a href="#">Cookies</a>
+                    <span class="mx-2">·</span>
+                    <a href="#">Privacidad</a>
+                </div>
+
+                <!-- REDES SOCIALES -->
+
+                <div class="footer-social">
+                    <a href="https://instagram.com/bairoom.rent"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/jesusbailen"><i class="bi bi-linkedin"></i></a>
+                    <a href="#"><i class="bi bi-tiktok"></i></a>
+                </div>
+
+            </div>
+        </footer>
+    </div>
+
+    <!-- ================================
+     SECCIÓN CONTACTO
+================================ -->
+    <section class="contacto-bairoom py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+
+                <!-- Card contenedora -->
+                <div class="col-lg-8">
+                    <div class="contact-card p-5">
+
+                        <!-- Título -->
+                        <div class="text-center mb-4">
+                            <h2 class="contact-title">
+                                Cuéntanos en qué podemos ayudarte y nuestro equipo se pondrá en contacto contigo.
+                            </h2>
+                        </div>
+                        <div class="section-divider-bairoom"></div>
+                        <!-- Formulario -->
+                        <form>
+
+                            <div class="row g-4">
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Nombre</label>
+                                    <input type="text" class="form-control bairoom-input" placeholder="Tu nombre">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-control bairoom-input" placeholder="tu@email.com">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Teléfono</label>
+                                    <input type="tel" class="form-control bairoom-input" placeholder="+34 600 000 000">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label class="form-label">Soy</label>
+                                    <select class="form-select bairoom-input">
+                                        <option selected>Selecciona una opción</option>
+                                        <option>Inquilino</option>
+                                        <option>Propietario</option>
+                                        <option>Empresa / Partner</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label">Mensaje</label>
+                                    <textarea rows="5" class="form-control bairoom-input"
+                                        placeholder="Explícanos brevemente tu caso"></textarea>
+                                </div>
+
+                            </div>
+
+                            <!-- Botón -->
+                            <div class="text-center mt-5">
+                                <button type="submit" class="btn btn-bairoom px-5 py-3">
+                                    Enviar mensaje
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- FOOTER (igual que index) -->
+    <footer class="footer-bairoom mt-5 py-4">
+        <div class="container text-center">
+
+            <a href="index.html">
+                <img src="img/logo_blanco.png" class="footer-logo mb-3" alt="Bairoom logo">
+            </a>
+            <div class="footer-links mb-3">
+                <a href="legal.html">Legal</a> ·
+                <a href="cookies.html">Cookies</a> ·
+                <a href="privacidad.html">Privacidad</a>
+            </div>
+
+            <div class="footer-social">
+                <a href="https://instagram.com/bairoom.rent"><i class="bi bi-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/jesusbailen"><i class="bi bi-linkedin"></i></a>
+                <a href="#"><i class="bi bi-tiktok"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+
+
+

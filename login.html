@@ -1,0 +1,181 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bairoom · Iniciar sesión</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body class="d-flex flex-column min-vh-100">
+    <header class="header-bairoom-simple">
+      <div class="container">
+        <!-- NAVBAR UNIFICADO -->
+        <nav class="navbar navbar-expand-lg w-100">
+          <!-- LOGO -->
+          <a class="navbar-brand" href="index.html">
+            <img
+              src="img/logo_blanco.png"
+              class="hero-logo-img"
+              alt="Bairoom"
+            />
+          </a>
+
+          <!-- HAMBURGUESA -->
+          <button
+            class="navbar-toggler border-0"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <!-- LINKS -->
+          <div
+            class="collapse navbar-collapse justify-content-end"
+            id="mainNavbar"
+          >
+            <ul class="navbar-nav align-items-lg-center gap-lg-4 text-center">
+              <li class="nav-item">
+                <a
+                  class="nav-link fw-bold text-white"
+                  href="sobrenosotros.html"
+                >
+                  SOBRE NOSOTROS
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-white" href="coliving.html">
+                  COLIVING
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-white" href="propietarios.html">
+                  PROPIETARIOS
+                </a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link fw-bold text-white" href="contacto.html">
+                  CONTACTO
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- CONTENIDO LOGIN -->
+    <main class="container flex-grow-1 mt-5 mt-lg-5 pt-lg-5">
+      <div class="row justify-content-center mt-lg-5 pt-lg-4">
+        <div class="col-md-6 col-lg-5">
+          <div class="card-bairoom shadow-sm p-4 p-md-5 rounded-4">
+            <div class="text-center mb-4">
+              <i class="bi bi-person-circle fs-1 text-primary"></i>
+            </div>
+
+            <h2 class="fw-bold text-center mb-2">Inicia sesión</h2>
+            <p class="text-muted text-center mb-4">
+              Accede a tu cuenta de Bairoom
+            </p>
+
+            <form>
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Email</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="tu@email.com"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label fw-semibold">Contraseña</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="••••••••"
+                  required
+                />
+              </div>
+
+              <div class="d-grid mt-4">
+                <button type="submit" class="btn btn-primary btn-bairoom">
+                  Entrar en Bairoom
+                </button>
+              </div>
+            </form>
+
+            <div class="text-center mt-4">
+              <a href="#" class="text-decoration-none small">
+                ¿Has olvidado tu contraseña?
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- FOOTER BAIROOM -->
+    <footer class="footer-bairoom mt-5 py-4">
+      <div class="container text-center">
+        <!-- LOGO -->
+        <div class="mb-3">
+          <a href="index.html">
+            <img src="img/logo_blanco.png" alt="Bairoom" class="footer-logo" />
+          </a>
+        </div>
+
+        <!-- ENLACES LEGALES -->
+        <div class="footer-links mb-3">
+          <a href="#">Legal</a>
+          <span class="mx-2">·</span>
+          <a href="#">Cookies</a>
+          <span class="mx-2">·</span>
+          <a href="#">Privacidad</a>
+        </div>
+
+        <!-- REDES SOCIALES -->
+
+        <div class="footer-social">
+          <a href="https://instagram.com/bairoom.rent"
+            ><i class="bi bi-instagram"></i
+          ></a>
+          <a href="https://www.linkedin.com/in/jesusbailen"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+          <a href="#"><i class="bi bi-tiktok"></i></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
+
+
+
+
+
