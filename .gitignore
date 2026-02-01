@@ -9,9 +9,14 @@ Thumbs.db
 
 # Env
 .env
+.env.local
+.env.hosting
 .env.*.local
 
 # Build / deps (if added later)
 node_modules/
 dist/
 build/
+
+# Stripe vendor (use composer install when needed)
+stripe/vendor/

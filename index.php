@@ -1,0 +1,521 @@
+﻿<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bairoom - Inicio</title>
+
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src='js/main.js' defer></script>  </head>
+
+  <body class="page-layout">
+    <?php
+
+$hero_alt = "Bairoom";
+$hero_class = "hero-bairoom--tall hero-bairoom--lightnav";
+$active = "";
+include __DIR__ . "/includes/header-hero.php";
+?>
+
+    <section class="container my-5 section-block hero-intro">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="card-bairoom shadow-sm p-4 p-md-5 rounded-4">
+            <div class="text-center mb-4 hero-intro-icon">
+              <i class="bi bi-building-check text-primary fs-1"></i>
+            </div>
+
+            <h2 class="fw-bold text-center mb-3">
+              Bienvenido a la revolución inmobiliaria
+            </h2>
+
+            <p class="descripcion-bairoom text-center">
+              Bairoom es la aplicación que conecta a propietarios con
+              inquilinos, simplificando procesos y evitando el papeleo
+              burocrático. Gestionamos cada paso para que alquilar o encontrar
+              habitación sea rápido, seguro y sin esfuerzo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="product-video-section my-5 section-block">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <!-- TEXTO -->
+          <div class="col-lg-5">
+            <span class="badge badge-bairoom mb-3">La app de Bairoom</span>
+
+            <h2 class="fw-bold mb-3">
+              Gestiona alquileres <strong>sin esfuerzo</strong>
+            </h2>
+
+            <p class="text-muted mb-4">
+              Dos paneles, la misma transparencia: pagos, contratos, incidencias
+              y calendario actualizados en tiempo real para propietarios e
+              inquilinos.
+            </p>
+
+            <ul class="list-unstyled product-features">
+              <li>
+                <i class="bi bi-check-circle-fill"></i> Rentabilidad en tiempo
+                real
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill"></i> Contratos y fechas clave
+              </li>
+              <li>
+                <i class="bi bi-check-circle-fill"></i> Gestión clara por
+                habitación
+              </li>
+            </ul>
+
+            <div class="mt-4">
+              <a href="coliving.php" class="btn btn-primary btn-bairoom me-2"
+                >Ver panel inquilino</a
+              >
+              <a
+                href="propietarios.php"
+                class="text-decoration-none fw-semibold"
+                >Ver panel propietario</a
+              >
+            </div>
+          </div>
+
+          <!-- VÍDEO -->
+          <div class="col-lg-7">
+            <div class="product-video-wrapper shadow-lg">
+              <video
+                class="product-video"
+                src="video/producto.mp4"
+                playsinline
+                preload="metadata"
+                controls
+              ></video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="role-chooser">
+      <h1 class="role-chooser-title">
+        Elige tu rol y entra con total transparencia
+      </h1>
+      <p class="role-chooser-subtitle">
+        Todo lo que importa en un solo panel: pagos, contratos, incidencias y
+        calendario, sin sorpresas.
+      </p>
+
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="role-card role-card--tenant">
+            <span class="role-tag"
+              ><i class="bi bi-house-door"></i> Inquilino</span
+            >
+            <div class="role-icon"><i class="bi bi-person-check"></i></div>
+            <h3>Reserva y gestiona tu estancia</h3>
+            <p>
+              Solicita habitación, firma online, revisa pagos y sigue el estado
+              de incidencias con total claridad.
+            </p>
+            <ul class="role-meta">
+              <li>
+                <i class="bi bi-calendar-check"></i> Calendario y fechas clave
+              </li>
+              <li><i class="bi bi-credit-card"></i> Pagos claros y al día</li>
+              <li><i class="bi bi-tools"></i> Incidencias con seguimiento</li>
+            </ul>
+            <div class="role-actions">
+              <a href="coliving.php" class="btn btn-bairoom">Soy inquilino</a>
+              <a href="login.php" class="btn btn-outline-secondary"
+                >Entrar al panel</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="role-card role-card--owner">
+            <span class="role-tag"
+              ><i class="bi bi-graph-up"></i> Propietario</span
+            >
+            <div class="role-icon"><i class="bi bi-bar-chart"></i></div>
+            <h3>Controla tu vivienda en tiempo real</h3>
+            <p>
+              Consulta ingresos, ocupación y contratos. Gestiona incidencias y
+              documentos desde un panel único y ordenado.
+            </p>
+            <ul class="role-meta">
+              <li><i class="bi bi-cash-coin"></i> Ingresos y liquidaciones</li>
+              <li>
+                <i class="bi bi-file-earmark-text"></i> Contratos siempre
+                visibles
+              </li>
+              <li>
+                <i class="bi bi-shield-check"></i> Histórico y trazabilidad
+              </li>
+            </ul>
+            <div class="role-actions">
+              <a href="propietarios.php" class="btn btn-bairoom"
+                >Soy propietario</a
+              >
+              <a href="login.php" class="btn btn-outline-secondary"
+                >Entrar al panel</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="container panel-preview section-block">
+      <div class="text-center mb-4">
+        <h2 class="fw-bold">Vista previa de la App</h2>
+        <p class="text-muted">
+          Cambia entre perfiles y descubre qué ve cada parte en tiempo real.
+        </p>
+      </div>
+
+      <div class="panel-frame">
+        <ul class="nav panel-nav justify-content-center" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="tab-inquilino"
+              data-bs-toggle="tab"
+              data-bs-target="#panel-inquilino"
+              type="button"
+              role="tab"
+              aria-controls="panel-inquilino"
+              aria-selected="true"
+            >
+              Inquilino
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="tab-propietario"
+              data-bs-toggle="tab"
+              data-bs-target="#panel-propietario"
+              type="button"
+              role="tab"
+              aria-controls="panel-propietario"
+              aria-selected="false"
+            >
+              Propietario
+            </button>
+          </li>
+        </ul>
+
+        <div class="tab-content">
+          <div
+            class="tab-pane fade show active"
+            id="panel-inquilino"
+            role="tabpanel"
+            aria-labelledby="tab-inquilino"
+          >
+            <div class="panel-grid">
+              <div class="panel-card panel-wide panel-card--accent">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h4>Reserva activa</h4>
+                  <span class="panel-badge panel-badge--good"
+                    ><i class="bi bi-shield-check"></i> Verificada</span
+                  >
+                </div>
+                <strong>Habitación exterior • Centro</strong>
+                <span>Entrada 01/04 • Salida 30/06</span>
+                <ul class="panel-list">
+                  <li>
+                    <i class="bi bi-file-earmark-text"></i> Contrato firmado
+                  </li>
+                  <li><i class="bi bi-credit-card"></i> Próximo pago: 01/05</li>
+                  <li><i class="bi bi-tools"></i> Incidencias: 1 en curso</li>
+                </ul>
+              </div>
+              <div class="panel-card panel-narrow">
+                <h4>Estado de pagos</h4>
+                <strong>OK</strong>
+                <span>Último pago registrado</span>
+              </div>
+              <div class="panel-card panel-narrow">
+                <h4>Mensajería</h4>
+                <strong>2 nuevos</strong>
+                <span>Actualizaciones del equipo</span>
+              </div>
+              <div class="panel-card panel-wide">
+                <h4>Checklist de entrada</h4>
+                <ul class="panel-list">
+                  <li>
+                    <i class="bi bi-check-circle-fill"></i> Documentación subida
+                  </li>
+                  <li>
+                    <i class="bi bi-check-circle-fill"></i> Fianza confirmada
+                  </li>
+                  <li><i class="bi bi-clock"></i> Visita pendiente</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="panel-propietario"
+            role="tabpanel"
+            aria-labelledby="tab-propietario"
+          >
+            <div class="panel-grid">
+              <div class="panel-card panel-wide panel-card--accent">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h4>Ingresos del mes</h4>
+                  <span class="panel-badge panel-badge--good"
+                    ><i class="bi bi-graph-up"></i> +12%</span
+                  >
+                </div>
+                <strong>2.430 €</strong>
+                <span>Ocupación 94% • 7 habitaciones</span>
+                <ul class="panel-list">
+                  <li><i class="bi bi-calendar2-check"></i> Cobros al día</li>
+                  <li>
+                    <i class="bi bi-file-earmark-text"></i> 4 contratos activos
+                  </li>
+                  <li><i class="bi bi-tools"></i> 1 incidencia abierta</li>
+                </ul>
+              </div>
+              <div class="panel-card panel-narrow">
+                <h4>Próximas salidas</h4>
+                <strong>2</strong>
+                <span>En los próximos 30 días</span>
+              </div>
+              <div class="panel-card panel-narrow">
+                <h4>Liquidaciones</h4>
+                <strong>3</strong>
+                <span>Listas para descargar</span>
+              </div>
+              <div class="panel-card panel-wide">
+                <h4>Seguimiento de incidencias</h4>
+                <ul class="panel-list">
+                  <li><i class="bi bi-check-circle-fill"></i> 5 resueltas</li>
+                  <li><i class="bi bi-clock"></i> 1 en progreso</li>
+                  <li><i class="bi bi-bell"></i> 2 pendientes de revisión</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider-bairoom"></div>
+
+    <section class="container my-5 section-block">
+      <h2 class="text-center fw-bold mb-4">Cómo funciona Bairoom</h2>
+      <p class="text-center text-muted mb-5">
+        Dos caminos, un mismo objetivo: que alquilar o encontrar habitación sea
+        sencillo, rápido y sin esfuerzo.
+      </p>
+
+      <div class="row g-4">
+        <!-- PROPIETARIOS -->
+        <div class="col-md-6">
+          <div class="card-flow-container p-4 h-100 shadow-sm rounded-4">
+            <a href="propietarios.php" class="role-link text-decoration-none">
+              <h4 class="fw-bold text-center mb-4">Propietarios</h4>
+            </a>
+
+            <div class="steps-container">
+              <div class="step-box" style="--step-color: #a4d4ae">
+                <div class="step-icon"><i class="bi bi-key-fill"></i></div>
+                <div class="step-text">
+                  <strong>Nos cedes tu vivienda</strong><br />
+                  Nos encargamos de todo el proceso sin gestiones.
+                </div>
+              </div>
+
+              <div class="step-box" style="--step-color: #9ec9e2">
+                <div class="step-icon"><i class="bi bi-brush"></i></div>
+                <div class="step-text">
+                  <strong>La preparamos y optimizamos</strong><br />
+                  Limpieza, orden y publicación profesional.
+                </div>
+              </div>
+
+              <div class="step-box" style="--step-color: #f7f7f7">
+                <div class="step-icon"><i class="bi bi-people-fill"></i></div>
+                <div class="step-text">
+                  <strong>Seleccionamos inquilinos fiables</strong>
+                </div>
+              </div>
+
+              <div class="step-box" style="--step-color: #ffb6a0">
+                <div class="step-icon"><i class="bi bi-cash-stack"></i></div>
+                <div class="step-text">
+                  <strong>Recibes ingresos sin esfuerzo</strong><br />
+                  Gestionamos contratos, pagos e incidencias.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- INQUILINOS -->
+        <div class="col-md-6">
+          <div class="card-flow-container p-4 h-100 shadow-sm rounded-4">
+            <a href="coliving.php" class="role-link text-decoration-none">
+              <h4 class="fw-bold text-center mb-4">Inquilinos</h4>
+            </a>
+
+            <div class="steps-container">
+              <div class="step-box" style="--step-color: #a4d4ae">
+                <div class="step-icon"><i class="bi bi-search"></i></div>
+                <div class="step-text">
+                  <strong>Explora habitaciones disponibles</strong><br />
+                  Opciones verificadas listas para entrar a vivir.
+                </div>
+              </div>
+
+              <div class="step-box" style="--step-color: #9ec9e2">
+                <div class="step-icon"><i class="bi bi-pencil-square"></i></div>
+                <div class="step-text">
+                  <strong>Completa tu solicitud online</strong><br />
+                  Proceso rápido y sin burocracia.
+                </div>
+              </div>
+
+              <div class="step-box" style="--step-color: #f7f7f7">
+                <div class="step-icon"><i class="bi bi-clock-history"></i></div>
+                <div class="step-text">
+                  <strong>Espera la confirmación del equipo</strong>
+                </div>
+              </div>
+
+              <div class="step-box" style="--step-color: #ffb6a0">
+                <div class="step-icon"><i class="bi bi-suitcase-lg"></i></div>
+                <div class="step-text">
+                  <strong>Firma y haz las maletas</strong><br />
+                  Gestionamos el contrato sin complicaciones.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="section-divider-bairoom"></div>
+
+    <section class="container my-5 section-block">
+      <h2 class="fw-bold text-center mb-4">Habitaciones destacadas</h2>
+
+      <div
+        id="habitacionesCarousel"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <!-- INDICADORES -->
+        <div class="carousel-indicators">
+          <button
+            type="button"
+            data-bs-target="#habitacionesCarousel"
+            data-bs-slide-to="0"
+            class="active"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#habitacionesCarousel"
+            data-bs-slide-to="1"
+          ></button>
+          <button
+            type="button"
+            data-bs-target="#habitacionesCarousel"
+            data-bs-slide-to="2"
+          ></button>
+        </div>
+
+        <!-- SLIDES -->
+        <div class="carousel-inner rounded-4 shadow">
+          <!-- SLIDE 1 -->
+          <div class="carousel-item active">
+            <img
+              src="img/hab1.png"
+              class="d-block w-100 carousel-img"
+              alt="Habitación destacada 1"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Habitación en centro</h5>
+              <p>Elche · 30 €/noche</p>
+            </div>
+          </div>
+
+          <!-- SLIDE 2 -->
+          <div class="carousel-item">
+            <img
+              src="img/hab2.png"
+              class="d-block w-100 carousel-img"
+              alt="Habitación destacada 2"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Habitación con balcón</h5>
+              <p>Santa Pola · 45 €/noche</p>
+            </div>
+          </div>
+
+          <!-- SLIDE 3 -->
+          <div class="carousel-item">
+            <img
+              src="img/hab3.png"
+              class="d-block w-100 carousel-img"
+              alt="Habitación destacada 3"
+            />
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Suite moderna</h5>
+              <p>Alicante · 30 €/noche</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONTROLES -->
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#habitacionesCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#habitacionesCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </section>
+
+    <?php include __DIR__ . "/includes/footer.php"; ?>
+
+    <!-- Bootstrap JS (necesario para el carrusel y componentes dinámicos) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+
+
+
