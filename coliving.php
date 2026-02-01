@@ -18,10 +18,12 @@
     <link rel="stylesheet" href="css/styles.css" />
     <script src='js/main.js' defer></script>  </head>
 
-  <body class="page-layout">
+  
     <?php
 
+$hero_image = "";
 $hero_alt = "Coliving Bairoom";
+$hero_class = "hero-bairoom--noimage hero-bairoom--lightnav";
 $active = "coliving";
 include __DIR__ . "/includes/header-hero.php";
 ?>
@@ -165,6 +167,5 @@ include __DIR__ . "/includes/header-hero.php";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
-
 
 

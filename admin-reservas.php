@@ -141,8 +141,27 @@ if ($editId > 0) {
 }
 
 $active = '';
-include __DIR__ . '/includes/header-simple.php';
 ?>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrador | Reservas</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body class="page-layout owner-panel-body">
+    <?php include __DIR__ . '/includes/header-simple.php'; ?>
 
 <main class="container my-5 section-block">
   <div class="d-flex justify-content-between align-items-center mb-4">
@@ -150,7 +169,13 @@ include __DIR__ . '/includes/header-simple.php';
       <h1 class="fw-bold">Reservas</h1>
       <p class="text-muted mb-0">Listado, edición, inserción y control de estados.</p>
     </div>
-    <a href="admin.php" class="btn btn-outline-secondary btn-sm">Volver al panel</a>
+    <div class="d-flex gap-2">
+      <a
+        href="docs/admin-reservas.php?q=<?php echo urlencode($q); ?>&estado=<?php echo urlencode($estadoFilter); ?>&pago=<?php echo urlencode($pagoFilter); ?>&sort=<?php echo urlencode($sort); ?>&dir=<?php echo urlencode($dir); ?>"
+        class="btn btn-outline-primary btn-sm"
+      >Descargar PDF</a>
+      <a href="admin.php" class="btn btn-outline-secondary btn-sm">Volver al panel</a>
+    </div>
   </div>
 
   <?php if ($error): ?>
@@ -167,7 +192,7 @@ include __DIR__ . '/includes/header-simple.php';
       <?php if ($editReserva): ?>
         <input type="hidden" name="id_reserva" value="<?php echo (int) $editReserva['id_reserva']; ?>" />
       <?php endif; ?>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <label class="form-label">Usuario</label>
         <select name="id_usuario" class="form-select">
           <?php foreach ($usuarios as $u): ?>
@@ -177,7 +202,7 @@ include __DIR__ . '/includes/header-simple.php';
           <?php endforeach; ?>
         </select>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <label class="form-label">Habitación</label>
         <select name="id_habitacion" class="form-select">
           <?php foreach ($habitaciones as $h): ?>
@@ -187,15 +212,15 @@ include __DIR__ . '/includes/header-simple.php';
           <?php endforeach; ?>
         </select>
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <label class="form-label">Entrada</label>
         <input type="date" class="form-control bairoom-input" name="fecha_inicio" value="<?php echo htmlspecialchars($editReserva['fecha_inicio'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required />
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <label class="form-label">Salida</label>
         <input type="date" class="form-control bairoom-input" name="fecha_fin" value="<?php echo htmlspecialchars($editReserva['fecha_fin'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required />
       </div>
-      <div class="col-md-2">
+      <div class="col-md-3">
         <label class="form-label">Estado</label>
         <select name="estado" class="form-select">
           <?php
@@ -291,8 +316,6 @@ include __DIR__ . '/includes/header-simple.php';
                   <input type="hidden" name="id_reserva" value="<?php echo (int) $r['id_reserva']; ?>" />
                   <button type="submit" class="btn btn-sm btn-outline-danger">Eliminar</button>
                 </form>
-              <?php else: ?>
-                <span class="text-muted">Histórico</span>
               <?php endif; ?>
             </td>
           </tr>
@@ -318,3 +341,6 @@ include __DIR__ . '/includes/header-simple.php';
 </main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

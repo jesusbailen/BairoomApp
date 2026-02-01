@@ -2,6 +2,7 @@
 declare(strict_types=1);
 require_once __DIR__ . '/includes/auth.php';
 require_once __DIR__ . '/includes/db.php';
+require_once __DIR__ . '/scripts/cron-finalizar-reservas.php';
 
 bairoom_require_role('Inquilino');
 $user = bairoom_current_user();
@@ -399,6 +400,7 @@ $active = '';
                   <a href="pago-stripe.php?reserva=<?php echo (int) $res['id_reserva']; ?>" class="btn btn-sm btn-success">Pagar</a>
                 <?php elseif (($res['pago_estado'] ?? '') === 'pagado'): ?>
                   <span class="badge badge-paid-bairoom">Pagado</span>
+                  <a href="docs/reserva.php?id=<?php echo (int) $res['id_reserva']; ?>" class="btn btn-sm btn-outline-primary">Descargar reserva</a>
                 <?php endif; ?>
                 <?php if (($res['pago_estado'] ?? '') === 'pagado'): ?>
                   <button type="button" class="btn btn-sm btn-outline-secondary" onclick="alert('Esta reserva ya está pagada y no es reembolsable.');">
@@ -675,3 +677,4 @@ $active = '';
     </script>
   </body>
 </html>
+

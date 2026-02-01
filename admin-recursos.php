@@ -25,6 +25,25 @@ $owners = $pdo->query('
   ORDER BY u.nombre
 ')->fetchAll();
 
+function bairoom_upload_image(string $field, string $subdir): ?string
+{
+  if (!isset($_FILES[$field]) || $_FILES[$field]['error'] !== UPLOAD_ERR_OK) {
+    return null;
+  }
+  $baseDir = __DIR__ . '/img/uploads/' . $subdir;
+  if (!is_dir($baseDir)) {
+    mkdir($baseDir, 0755, true);
+  }
+  $ext = pathinfo($_FILES[$field]['name'], PATHINFO_EXTENSION);
+  $safeExt = preg_replace('/[^a-zA-Z0-9]/', '', $ext);
+  $filename = uniqid('img_', true) . ($safeExt ? '.' . $safeExt : '');
+  $targetPath = $baseDir . '/' . $filename;
+  if (move_uploaded_file($_FILES[$field]['tmp_name'], $targetPath)) {
+    return 'img/uploads/' . $subdir . '/' . $filename;
+  }
+  return null;
+}
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $action = $_POST['action'] ?? '';
 
@@ -103,6 +122,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         VALUES (?, ?, ?, ?, ?, ?, ?)
       ');
       $stmt->execute([$nombre, $m2 ?: null, $tipo, $capacidad, $precio, $estado, $propiedad]);
+      $habId = (int) $pdo->lastInsertId();
+      $imgPath = bairoom_upload_image('imagen', 'habitaciones');
+      if ($imgPath) {
+        $stmt = $pdo->prepare('
+          INSERT INTO habitacion_imagen (id_habitacion, ruta_imagen, es_principal)
+          VALUES (?, ?, 1)
+        ');
+        $stmt->execute([$habId, $imgPath]);
+      }
       $success = 'Habitación creada.';
     }
   }
@@ -126,6 +154,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         WHERE id_habitacion = ?
       ');
       $stmt->execute([$nombre, $m2 ?: null, $tipo, $capacidad, $precio, $estado, $propiedad, $id]);
+      $imgPath = bairoom_upload_image('imagen', 'habitaciones');
+      if ($imgPath) {
+        $stmt = $pdo->prepare('UPDATE habitacion_imagen SET es_principal = 0 WHERE id_habitacion = ?');
+        $stmt->execute([$id]);
+        $stmt = $pdo->prepare('
+          INSERT INTO habitacion_imagen (id_habitacion, ruta_imagen, es_principal)
+          VALUES (?, ?, 1)
+        ');
+        $stmt->execute([$id, $imgPath]);
+      }
       $success = 'Habitación actualizada.';
     }
   }
@@ -147,6 +185,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 $qprop = trim($_GET['qprop'] ?? '');
 $estadoProp = trim($_GET['estadoprop'] ?? '');
+$sortProp = $_GET['sortprop'] ?? 'id_propiedad';
+$dirProp = strtolower($_GET['dirprop'] ?? 'desc') === 'asc' ? 'asc' : 'desc';
 $pageProp = max(1, (int) ($_GET['pageprop'] ?? 1));
 $perPage = 10;
 $offsetProp = ($pageProp - 1) * $perPage;
@@ -164,6 +204,15 @@ if ($propHasEstado && $estadoProp !== '') {
 }
 $propWhere = $propWhere ? ('WHERE ' . implode(' AND ', $propWhere)) : '';
 
+$propSortMap = [
+  'nombre' => 'p.nombre',
+  'ciudad' => 'p.ciudad',
+  'capacidad' => 'p.capacidad_total',
+  'propietario' => 'u.nombre',
+  'id' => 'p.id_propiedad',
+];
+$propSortSql = $propSortMap[$sortProp] ?? $propSortMap['id'];
+
 $stmt = $pdo->prepare("
   SELECT COUNT(*) FROM propiedad p
   $propWhere
@@ -177,7 +226,7 @@ $stmt = $pdo->prepare("
   FROM propiedad p
   JOIN usuario u ON u.id_usuario = p.id_propietario
   $propWhere
-  ORDER BY p.id_propiedad DESC
+  ORDER BY $propSortSql $dirProp
   LIMIT $perPage OFFSET $offsetProp
 ");
 $stmt->execute($propParams);
@@ -185,9 +234,13 @@ $propiedades = $stmt->fetchAll();
 
 $stmt = $pdo->query('SELECT id_propiedad, nombre FROM propiedad ORDER BY nombre');
 $allPropiedades = $stmt->fetchAll();
+$hasProps = count($allPropiedades) > 0;
+$disableHabForm = $hasProps ? '' : 'disabled';
 
 $qhab = trim($_GET['qhab'] ?? '');
 $estadoHab = trim($_GET['estadohab'] ?? '');
+$sortHab = $_GET['sorthab'] ?? 'id_habitacion';
+$dirHab = strtolower($_GET['dirhab'] ?? 'desc') === 'asc' ? 'asc' : 'desc';
 $pageHab = max(1, (int) ($_GET['pagehab'] ?? 1));
 $offsetHab = ($pageHab - 1) * $perPage;
 $habWhere = [];
@@ -203,6 +256,16 @@ if ($estadoHab !== '') {
 }
 $habWhere = $habWhere ? ('WHERE ' . implode(' AND ', $habWhere)) : '';
 
+$habSortMap = [
+  'nombre' => 'h.nombre',
+  'propiedad' => 'p.nombre',
+  'tipo' => 'h.tipo',
+  'precio' => 'h.precio_noche',
+  'estado' => 'h.estado',
+  'id' => 'h.id_habitacion',
+];
+$habSortSql = $habSortMap[$sortHab] ?? $habSortMap['id'];
+
 $stmt = $pdo->prepare("
   SELECT COUNT(*) FROM habitacion h
   JOIN propiedad p ON p.id_propiedad = h.id_propiedad
@@ -217,7 +280,7 @@ $stmt = $pdo->prepare("
   FROM habitacion h
   JOIN propiedad p ON p.id_propiedad = h.id_propiedad
   $habWhere
-  ORDER BY h.id_habitacion DESC
+  ORDER BY $habSortSql $dirHab
   LIMIT $perPage OFFSET $offsetHab
 ");
 $stmt->execute($habParams);
@@ -239,14 +302,33 @@ if ($editHabId > 0) {
 }
 
 $active = '';
-include __DIR__ . '/includes/header-simple.php';
 ?>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrador | Recursos</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body class="page-layout owner-panel-body">
+    <?php include __DIR__ . '/includes/header-simple.php'; ?>
 
 <main class="container my-5 section-block">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
       <h1 class="fw-bold">Recursos</h1>
-      <p class="text-muted mb-0">Propiedades (contenedor) y habitaciones (reservables).</p>
+      <p class="text-muted mb-0">Propiedades (no reservables) y habitaciones (reservables).</p>
     </div>
     <a href="admin.php" class="btn btn-outline-secondary btn-sm">Volver al panel</a>
   </div>
@@ -260,7 +342,7 @@ include __DIR__ . '/includes/header-simple.php';
 
   <div class="card-bairoom shadow-sm p-4 p-md-5 rounded-4 mb-4">
     <h4 class="fw-bold mb-3"><?php echo $editProp ? 'Editar propiedad' : 'Nueva propiedad'; ?></h4>
-    <form method="post" class="row g-3">
+    <form method="post" class="row g-3" enctype="multipart/form-data">
       <input type="hidden" name="action" value="<?php echo $editProp ? 'actualizar_propiedad' : 'crear_propiedad'; ?>" />
       <?php if ($editProp): ?>
         <input type="hidden" name="id_propiedad" value="<?php echo (int) $editProp['id_propiedad']; ?>" />
@@ -308,6 +390,7 @@ include __DIR__ . '/includes/header-simple.php';
     </form>
   </div>
 
+  <h4 class="fw-bold mt-5 mb-3">Listado de propiedades</h4>
   <div class="d-flex justify-content-between align-items-center mb-3">
     <form method="get" class="d-flex gap-2 flex-wrap">
       <input type="text" name="qprop" class="form-control" placeholder="Buscar propiedad" value="<?php echo htmlspecialchars($qprop, ENT_QUOTES, 'UTF-8'); ?>" />
@@ -318,6 +401,8 @@ include __DIR__ . '/includes/header-simple.php';
           <option value="inactiva" <?php echo $estadoProp === 'inactiva' ? 'selected' : ''; ?>>Inactiva</option>
         </select>
       <?php endif; ?>
+      <input type="hidden" name="sortprop" value="<?php echo htmlspecialchars($sortProp, ENT_QUOTES, 'UTF-8'); ?>" />
+      <input type="hidden" name="dirprop" value="<?php echo htmlspecialchars($dirProp, ENT_QUOTES, 'UTF-8'); ?>" />
       <button type="submit" class="btn btn-outline-primary">Buscar</button>
     </form>
     <div class="text-muted">Total: <?php echo $totalProps; ?></div>
@@ -386,7 +471,7 @@ include __DIR__ . '/includes/header-simple.php';
     <ul class="pagination">
       <?php for ($i = 1; $i <= $totalPropPages; $i++): ?>
         <li class="page-item <?php echo $i === $pageProp ? 'active' : ''; ?>">
-          <a class="page-link" href="?pageprop=<?php echo $i; ?>&qprop=<?php echo urlencode($qprop); ?>&estadoprop=<?php echo urlencode($estadoProp); ?>"><?php echo $i; ?></a>
+          <a class="page-link" href="?pageprop=<?php echo $i; ?>&qprop=<?php echo urlencode($qprop); ?>&estadoprop=<?php echo urlencode($estadoProp); ?>&sortprop=<?php echo urlencode($sortProp); ?>&dirprop=<?php echo urlencode($dirProp); ?>"><?php echo $i; ?></a>
         </li>
       <?php endfor; ?>
     </ul>
@@ -394,7 +479,10 @@ include __DIR__ . '/includes/header-simple.php';
 
   <div class="card-bairoom shadow-sm p-4 p-md-5 rounded-4 mb-4">
     <h4 class="fw-bold mb-3"><?php echo $editHab ? 'Editar habitación' : 'Nueva habitación'; ?></h4>
-    <form method="post" class="row g-3">
+    <?php if (!$hasProps): ?>
+      <div class="alert alert-warning">Primero crea una propiedad para poder añadir habitaciones.</div>
+    <?php endif; ?>
+    <form method="post" class="row g-3" enctype="multipart/form-data">
       <input type="hidden" name="action" value="<?php echo $editHab ? 'actualizar_habitacion' : 'crear_habitacion'; ?>" />
       <?php if ($editHab): ?>
         <input type="hidden" name="id_habitacion" value="<?php echo (int) $editHab['id_habitacion']; ?>" />
@@ -404,7 +492,7 @@ include __DIR__ . '/includes/header-simple.php';
         <input type="text" class="form-control bairoom-input" name="nombre" value="<?php echo htmlspecialchars($editHab['nombre'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" required />
       </div>
       <div class="col-md-2">
-        <label class="form-label">m²</label>
+        <label class="form-label">m2</label>
         <input type="number" step="0.01" class="form-control bairoom-input" name="m2" value="<?php echo htmlspecialchars($editHab['m2'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" />
       </div>
       <div class="col-md-2">
@@ -415,11 +503,13 @@ include __DIR__ . '/includes/header-simple.php';
           ?>
           <option value="individual" <?php echo $tipoActual === 'individual' ? 'selected' : ''; ?>>Individual</option>
           <option value="doble" <?php echo $tipoActual === 'doble' ? 'selected' : ''; ?>>Doble</option>
+          <option value="suite" <?php echo $tipoActual === 'suite' ? 'selected' : ''; ?>>Suite</option>
+          <option value="estudio" <?php echo $tipoActual === 'estudio' ? 'selected' : ''; ?>>Estudio</option>
         </select>
       </div>
       <div class="col-md-2">
         <label class="form-label">Capacidad</label>
-        <input type="number" min="1" class="form-control bairoom-input" name="capacidad" value="<?php echo htmlspecialchars($editHab['capacidad'] ?? 1, ENT_QUOTES, 'UTF-8'); ?>" required />
+        <input type="number" min="1" class="form-control bairoom-input" name="capacidad" value="<?php echo (int) ($editHab['capacidad'] ?? 1); ?>" required />
       </div>
       <div class="col-md-2">
         <label class="form-label">Precio noche</label>
@@ -437,8 +527,8 @@ include __DIR__ . '/includes/header-simple.php';
         </select>
       </div>
       <div class="col-md-3">
-        <label class="form-label">Propiedad</label>
-        <select name="id_propiedad" class="form-select">
+        <label class="form-label">Propiedad asociada</label>
+        <select name="id_propiedad" class="form-select" <?php echo $disableHabForm; ?> required>
           <?php foreach ($allPropiedades as $prop): ?>
             <option value="<?php echo (int) $prop['id_propiedad']; ?>" <?php echo ($editHab && (int) $editHab['id_propiedad'] === (int) $prop['id_propiedad']) ? 'selected' : ''; ?>>
               <?php echo htmlspecialchars($prop['nombre'], ENT_QUOTES, 'UTF-8'); ?>
@@ -446,8 +536,12 @@ include __DIR__ . '/includes/header-simple.php';
           <?php endforeach; ?>
         </select>
       </div>
+      <div class="col-md-6">
+        <label class="form-label">Imagen principal (opcional)</label>
+        <input type="file" class="form-control" name="imagen" accept="image/*" <?php echo $disableHabForm; ?> />
+      </div>
       <div class="col-12">
-        <button type="submit" class="btn btn-bairoom"><?php echo $editHab ? 'Guardar cambios' : 'Crear habitación'; ?></button>
+        <button type="submit" class="btn btn-bairoom" <?php echo $disableHabForm; ?>><?php echo $editHab ? 'Guardar cambios' : 'Crear habitación'; ?></button>
         <?php if ($editHab): ?>
           <a href="admin-recursos.php" class="btn btn-outline-secondary ms-2">Cancelar</a>
         <?php endif; ?>
@@ -464,6 +558,8 @@ include __DIR__ . '/includes/header-simple.php';
         <option value="ocupada" <?php echo $estadoHab === 'ocupada' ? 'selected' : ''; ?>>Ocupada</option>
         <option value="mantenimiento" <?php echo $estadoHab === 'mantenimiento' ? 'selected' : ''; ?>>Mantenimiento</option>
       </select>
+      <input type="hidden" name="sorthab" value="<?php echo htmlspecialchars($sortHab, ENT_QUOTES, 'UTF-8'); ?>" />
+      <input type="hidden" name="dirhab" value="<?php echo htmlspecialchars($dirHab, ENT_QUOTES, 'UTF-8'); ?>" />
       <button type="submit" class="btn btn-outline-primary">Buscar</button>
     </form>
     <div class="text-muted">Total: <?php echo $totalHabs; ?></div>
@@ -528,7 +624,7 @@ include __DIR__ . '/includes/header-simple.php';
     <ul class="pagination">
       <?php for ($i = 1; $i <= $totalHabPages; $i++): ?>
         <li class="page-item <?php echo $i === $pageHab ? 'active' : ''; ?>">
-          <a class="page-link" href="?pagehab=<?php echo $i; ?>&qhab=<?php echo urlencode($qhab); ?>&estadohab=<?php echo urlencode($estadoHab); ?>"><?php echo $i; ?></a>
+          <a class="page-link" href="?pagehab=<?php echo $i; ?>&qhab=<?php echo urlencode($qhab); ?>&estadohab=<?php echo urlencode($estadoHab); ?>&sorthab=<?php echo urlencode($sortHab); ?>&dirhab=<?php echo urlencode($dirHab); ?>"><?php echo $i; ?></a>
         </li>
       <?php endfor; ?>
     </ul>
@@ -536,3 +632,7 @@ include __DIR__ . '/includes/header-simple.php';
 </main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

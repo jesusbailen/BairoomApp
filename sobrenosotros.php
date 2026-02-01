@@ -17,18 +17,19 @@
 <body class="page-layout">
 
 <?php
-$hero_image = "img/sobrenosotros.webp";
+
 $hero_alt = "Sobre nosotros";
+$hero_class = "hero-bairoom--noimage hero-bairoom--lightnav sobre-hero-clean";
 $active = "sobrenosotros";
 include __DIR__ . "/includes/header-hero.php";
-?>            </div><div class="section-divider-bairoom"></div>
+?>
 
 
         <!-- ======================================================
    SECCIÓN SOBRE NOSOTROS · ESTILO MUPPY
 ====================================================== -->
 
-        <section class="container sobre-wrapper spacer-xl about-history">
+        <section class="container sobre-wrapper spacer-xl about-history sobre-hero-section">
 
             <!-- Nuestra historia -->
             <h2 class="section-title">Nuestra historia</h2>
@@ -150,9 +151,6 @@ include __DIR__ . "/includes/header-hero.php";
 </body>
 
 </html>
-
-
-
 
 
 

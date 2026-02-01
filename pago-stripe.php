@@ -105,6 +105,9 @@ $active = '';
                 <div class="mt-3 text-muted">Tu reserva todavía no ha sido aceptada.</div>
               <?php elseif ($pagado): ?>
                 <div class="mt-3 text-success fw-semibold">Pago confirmado. ¡Gracias!</div>
+                <div class="mt-3">
+                  <a href="docs/reserva.php?id=<?php echo (int) $reservaId; ?>" class="btn btn-outline-primary btn-sm">Descargar reserva</a>
+                </div>
               <?php else: ?>
                 <div class="mt-3 text-muted">Serás redirigido a Stripe para completar el pago.</div>
               <?php endif; ?>

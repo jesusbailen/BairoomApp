@@ -84,6 +84,12 @@ if (!function_exists("bairoom_nav_class")) {
                 MI PANEL
               </a>
             </li>
+          <?php elseif ($user && ($user['rol_nombre'] ?? '') === 'Administrador'): ?>
+            <li class="nav-item">
+              <a class="nav-link fw-bold nav-pill nav-pill--panel" href="<?php echo bairoom_url('admin.php'); ?>">
+                MI PANEL
+              </a>
+            </li>
           <?php endif; ?>
         </ul>
 
@@ -144,6 +150,8 @@ if (!function_exists("bairoom_nav_class")) {
           <a href="<?php echo bairoom_url('propietario/propietario-panel.php'); ?>">Mi panel</a>
         <?php elseif ($user && ($user['rol_nombre'] ?? '') === 'Inquilino'): ?>
           <a href="<?php echo bairoom_url('inquilino-panel.php'); ?>">Mi panel</a>
+        <?php elseif ($user && ($user['rol_nombre'] ?? '') === 'Administrador'): ?>
+          <a href="<?php echo bairoom_url('admin.php'); ?>">Mi panel</a>
         <?php endif; ?>
       </nav>
 

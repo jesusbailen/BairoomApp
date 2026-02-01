@@ -21,11 +21,12 @@
     <link rel="stylesheet" href="css/styles.css" />
     <script src='js/main.js' defer></script>  </head>
 
-  <body class="page-layout">
+ 
     <?php
 
+$hero_image = "";
 $hero_alt = "Bairoom";
-$hero_class = "hero-bairoom--tall hero-bairoom--lightnav";
+$hero_class = "hero-bairoom--noimage hero-bairoom--lightnav";
 $active = "";
 include __DIR__ . "/includes/header-hero.php";
 ?>
@@ -58,7 +59,7 @@ include __DIR__ . "/includes/header-hero.php";
         <div class="row align-items-center g-5">
           <!-- TEXTO -->
           <div class="col-lg-5">
-            <span class="badge badge-bairoom mb-3">La app de Bairoom</span>
+            
 
             <h2 class="fw-bold mb-3">
               Gestiona alquileres <strong>sin esfuerzo</strong>
@@ -417,105 +418,10 @@ include __DIR__ . "/includes/header-hero.php";
       </div>
     </section>
 
-    <div class="section-divider-bairoom"></div>
-
-    <section class="container my-5 section-block">
-      <h2 class="fw-bold text-center mb-4">Habitaciones destacadas</h2>
-
-      <div
-        id="habitacionesCarousel"
-        class="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <!-- INDICADORES -->
-        <div class="carousel-indicators">
-          <button
-            type="button"
-            data-bs-target="#habitacionesCarousel"
-            data-bs-slide-to="0"
-            class="active"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#habitacionesCarousel"
-            data-bs-slide-to="1"
-          ></button>
-          <button
-            type="button"
-            data-bs-target="#habitacionesCarousel"
-            data-bs-slide-to="2"
-          ></button>
-        </div>
-
-        <!-- SLIDES -->
-        <div class="carousel-inner rounded-4 shadow">
-          <!-- SLIDE 1 -->
-          <div class="carousel-item active">
-            <img
-              src="img/hab1.png"
-              class="d-block w-100 carousel-img"
-              alt="Habitación destacada 1"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Habitación en centro</h5>
-              <p>Elche · 30 €/noche</p>
-            </div>
-          </div>
-
-          <!-- SLIDE 2 -->
-          <div class="carousel-item">
-            <img
-              src="img/hab2.png"
-              class="d-block w-100 carousel-img"
-              alt="Habitación destacada 2"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Habitación con balcón</h5>
-              <p>Santa Pola · 45 €/noche</p>
-            </div>
-          </div>
-
-          <!-- SLIDE 3 -->
-          <div class="carousel-item">
-            <img
-              src="img/hab3.png"
-              class="d-block w-100 carousel-img"
-              alt="Habitación destacada 3"
-            />
-            <div class="carousel-caption d-none d-md-block">
-              <h5>Suite moderna</h5>
-              <p>Alicante · 30 €/noche</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- CONTROLES -->
-        <button
-          class="carousel-control-prev"
-          type="button"
-          data-bs-target="#habitacionesCarousel"
-          data-bs-slide="prev"
-        >
-          <span class="carousel-control-prev-icon"></span>
-        </button>
-
-        <button
-          class="carousel-control-next"
-          type="button"
-          data-bs-target="#habitacionesCarousel"
-          data-bs-slide="next"
-        >
-          <span class="carousel-control-next-icon"></span>
-        </button>
-      </div>
-    </section>
-
     <?php include __DIR__ . "/includes/footer.php"; ?>
 
     <!-- Bootstrap JS (necesario para el carrusel y componentes dinámicos) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
-
-
 

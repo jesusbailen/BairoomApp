@@ -40,14 +40,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($nombre === '' || $apellidos === '' || $email === '' || $password === '') {
       $error = 'Completa los campos obligatorios.';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $error = 'El email no es válido.';
+      $error = 'El email no es v�lido.';
     } elseif (strlen($password) < 6) {
-      $error = 'La contraseña debe tener al menos 6 caracteres.';
+      $error = 'La contrase�a debe tener al menos 6 caracteres.';
     } else {
       $stmt = $pdo->prepare('SELECT COUNT(*) FROM usuario WHERE email = ?');
       $stmt->execute([$email]);
       if ((int) $stmt->fetchColumn() > 0) {
-        $error = 'El email ya está registrado.';
+        $error = 'El email ya est� registrado.';
       } else {
         $hash = password_hash($password, PASSWORD_BCRYPT);
         $stmt = $pdo->prepare('
@@ -82,12 +82,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif ($nombre === '' || $apellidos === '' || $email === '') {
       $error = 'Completa los campos obligatorios.';
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $error = 'El email no es válido.';
+      $error = 'El email no es v�lido.';
     } else {
       $stmt = $pdo->prepare('SELECT COUNT(*) FROM usuario WHERE email = ? AND id_usuario != ?');
       $stmt->execute([$email, $idUsuario]);
       if ((int) $stmt->fetchColumn() > 0) {
-        $error = 'El email ya está en uso.';
+        $error = 'El email ya est� en uso.';
       } else {
         $stmt = $pdo->prepare('
           UPDATE usuario
@@ -180,14 +180,33 @@ if ($editId > 0) {
 }
 
 $active = '';
-include __DIR__ . '/includes/header-simple.php';
 ?>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administrador | Usuarios</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body class="page-layout owner-panel-body">
+    <?php include __DIR__ . '/includes/header-simple.php'; ?>
 
 <main class="container my-5 section-block">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <div>
       <h1 class="fw-bold">Usuarios</h1>
-      <p class="text-muted mb-0">Listado, alta, edición, roles y baja lógica.</p>
+      <p class="text-muted mb-0">Listado, alta, edición, roles y bajas de usuarios.</p>
     </div>
     <a href="admin.php" class="btn btn-outline-secondary btn-sm">Volver al panel</a>
   </div>
@@ -270,7 +289,7 @@ include __DIR__ . '/includes/header-simple.php';
     <table class="table align-middle">
       <thead>
         <tr>
-          <th><a href="?sort=nombre&dir=<?php echo $dir === 'asc' ? 'desc' : 'asc'; ?>">Nombre</a></th>
+          <th>Nombre</th>
           <th>Email</th>
           <th>Rol</th>
           <th>Estado</th>
@@ -283,7 +302,11 @@ include __DIR__ . '/includes/header-simple.php';
           <tr>
             <td><?php echo htmlspecialchars($row['nombre'] . ' ' . $row['apellidos'], ENT_QUOTES, 'UTF-8'); ?></td>
             <td><?php echo htmlspecialchars($row['email'], ENT_QUOTES, 'UTF-8'); ?></td>
-            <td><span class="badge bg-info text-dark"><?php echo htmlspecialchars($row['rol_nombre'], ENT_QUOTES, 'UTF-8'); ?></span></td>
+            <?php
+            $rolSlug = strtolower(trim((string) ($row['rol_nombre'] ?? '')));
+            $rolClass = 'role-badge role-badge--' . preg_replace('/[^a-z]/', '', $rolSlug);
+            ?>
+            <td><span class="<?php echo htmlspecialchars($rolClass, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($row['rol_nombre'], ENT_QUOTES, 'UTF-8'); ?></span></td>
             <td>
               <?php if ($row['estado'] === 'activo'): ?>
                 <span class="badge bg-success">Activo</span>
@@ -333,3 +356,6 @@ include __DIR__ . '/includes/header-simple.php';
 </main>
 
 <?php include __DIR__ . '/includes/footer.php'; ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

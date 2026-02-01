@@ -68,6 +68,19 @@ body {
   display: none;
 }
 
+.sobre-hero-clean {
+  box-shadow: none;
+  border-bottom: 0;
+  height: 0;
+  min-height: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.sobre-hero-section {
+  margin-top: 60px !important;
+}
+
 .owner-hero-intro {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -174,12 +187,16 @@ body {
 }
 
 body.page-layout {
-  padding-top: 84px;
+  padding-top: 138px;
+  min-height: 100vh;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 @media (max-width: 991px) {
   body.page-layout {
-    padding-top: 76px;
+    padding-top: 124px;
   }
 
   .hero-inner {
@@ -345,6 +362,10 @@ body.page-layout {
 .card-bairoom:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+.card-bairoom {
+  overflow: visible;
 }
 
 .card-flow-container {
@@ -651,6 +672,34 @@ body.page-layout {
   font-weight: 600;
 }
 
+.role-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  background: #eaf3ff;
+  color: #1f2a44;
+}
+
+.role-badge--administrador {
+  padding: 4px 12px;
+  background: rgba(13, 110, 253, 0.18);
+  color: #0b3d91;
+}
+
+.role-badge--propietario {
+  padding: 5px 14px;
+  background: rgba(76, 201, 140, 0.2);
+  color: #1c6b47;
+}
+
+.role-badge--inquilino {
+  padding: 3px 10px;
+  background: rgba(255, 193, 7, 0.25);
+  color: #6b4a00;
+}
+
 /* Ajuste REAL del título flotante */
 .search-title {
   position: relative;
@@ -902,6 +951,11 @@ body.page-layout {
 .panel-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 18px 40px rgba(15, 30, 55, 0.1);
+}
+
+.admin-panel .panel-card:hover {
+  transform: none;
+  box-shadow: 0 12px 30px rgba(15, 30, 55, 0.06);
 }
 
 .panel-card h4 {
@@ -1958,7 +2012,7 @@ body.page-layout {
   flex-direction: column;
 }
 .page-layout main {
-  flex: 1;
+  flex: 1 0 auto;
 }
 
 html,
@@ -1969,8 +2023,12 @@ body {
   margin-top: auto;
 }
 
+.page-layout .footer-bairoom {
+  margin-top: auto;
+}
+
 .owner-panel-body main {
-  margin-top: 2.5rem;
+  margin-top: 4.5rem;
 }
 
 .owner-panel-hero {
