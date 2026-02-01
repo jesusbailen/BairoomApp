@@ -20,3 +20,9 @@ build/
 
 # Stripe vendor (use composer install when needed)
 stripe/vendor/
+
+# Local temp files
+/scripts/cron-finalizar-reservas.php
+/test.pdf
+/tmp-dbcheck.php
+/tmp-test-pdf.php
