@@ -230,6 +230,7 @@ $active = '';
           <option value="aceptada" <?php echo $estadoActual === 'aceptada' ? 'selected' : ''; ?>>Aceptada</option>
           <option value="rechazada" <?php echo $estadoActual === 'rechazada' ? 'selected' : ''; ?>>Rechazada</option>
           <option value="cancelada" <?php echo $estadoActual === 'cancelada' ? 'selected' : ''; ?>>Cancelada</option>
+          <option value="finalizada" <?php echo $estadoActual === 'finalizada' ? 'selected' : ''; ?>>Finalizada</option>
         </select>
       </div>
       <div class="col-12">
@@ -250,6 +251,7 @@ $active = '';
         <option value="aceptada" <?php echo $estadoFilter === 'aceptada' ? 'selected' : ''; ?>>Aceptada</option>
         <option value="rechazada" <?php echo $estadoFilter === 'rechazada' ? 'selected' : ''; ?>>Rechazada</option>
         <option value="cancelada" <?php echo $estadoFilter === 'cancelada' ? 'selected' : ''; ?>>Cancelada</option>
+        <option value="finalizada" <?php echo $estadoFilter === 'finalizada' ? 'selected' : ''; ?>>Finalizada</option>
       </select>
       <select name="pago" class="form-select">
         <option value="">Pago</option>
@@ -293,6 +295,8 @@ $active = '';
                 <span class="badge bg-warning text-dark">Pendiente</span>
               <?php elseif ($r['estado'] === 'rechazada'): ?>
                 <span class="badge bg-danger">Rechazada</span>
+              <?php elseif ($r['estado'] === 'finalizada'): ?>
+                <span class="badge bg-secondary">Finalizada</span>
               <?php else: ?>
                 <span class="badge bg-secondary">Cancelada</span>
               <?php endif; ?>

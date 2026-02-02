@@ -74,7 +74,7 @@ CREATE TABLE reserva (
   fecha_inicio DATE NOT NULL,
   fecha_fin DATE NOT NULL,
   fecha_creacion DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  estado ENUM('pendiente','aceptada','rechazada','cancelada') DEFAULT 'pendiente',
+  estado ENUM('pendiente','aceptada','rechazada','cancelada','finalizada') DEFAULT 'pendiente',
   num_personas INT DEFAULT 1,
   motivo VARCHAR(255),
   observaciones TEXT,

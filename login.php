@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           </div>
 
           <div class="text-end mb-4">
-            <a href="inquilino-panel.php#perfil" class="login-link">¿Has olvidado tu contraseña?</a>
+            <a href="forgot-password.php" class="login-link">¿Has olvidado tu contraseña?</a>
           </div>
 
           <button type="submit" class="btn btn-bairoom w-100 py-3" name="action" value="login">

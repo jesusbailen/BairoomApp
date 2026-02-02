@@ -207,6 +207,9 @@ $stmt = $pdo->prepare('
 $stmt->execute([$user['id_usuario']]);
 $reservasUsuario = $stmt->fetchAll();
 
+$reservasAceptadas = [];
+$bloqueos = [];
+
 $today = date('Y-m-d');
 $stmt = $pdo->prepare('
   SELECT r.id_reserva, r.fecha_inicio, r.fecha_fin,
@@ -514,6 +517,7 @@ $active = '';
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+  (() => {
   const habitaciones = <?php echo json_encode($habitaciones, JSON_UNESCAPED_UNICODE); ?>;
   const reservasAceptadas = <?php echo json_encode($reservasAceptadas, JSON_UNESCAPED_UNICODE); ?>;
   const bloqueos = <?php echo json_encode($bloqueos, JSON_UNESCAPED_UNICODE); ?>;
@@ -526,6 +530,15 @@ $active = '';
 
   const calendarGrid = document.getElementById('calendarGrid');
   const calTitle = document.getElementById('calTitle');
+  const calPrev = document.getElementById('calPrev');
+  const calNext = document.getElementById('calNext');
+  const reserveForm = document.querySelector('.tenant-reserve-form');
+  const calendarEmpty = document.getElementById('calendarEmpty');
+  const reserveFormWrapper = document.getElementById('reserveForm');
+
+  if (!reserveRoomId || !reserveRoomName || !fechaInicio || !fechaFin || !calendarGrid || !calTitle || !calPrev || !calNext || !reserveForm || !calendarEmpty || !reserveFormWrapper) {
+    return;
+  }
   let currentMonth = new Date();
   let selectedRoom = null;
 
@@ -597,18 +610,18 @@ $active = '';
       selectedRoom = getRoomById(roomId);
       reserveRoomId.value = roomId;
       reserveRoomName.value = selectedRoom ? `${selectedRoom.nombre} · ${selectedRoom.ciudad}` : '';
-      document.getElementById('calendarEmpty').classList.add('d-none');
-      document.getElementById('reserveForm').classList.remove('tenant-reserve-hidden');
+      calendarEmpty.classList.add('d-none');
+      reserveFormWrapper.classList.remove('tenant-reserve-hidden');
       renderCalendar();
     });
   });
 
-  document.getElementById('calPrev').addEventListener('click', () => {
+  calPrev.addEventListener('click', () => {
     currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() - 1, 1);
     renderCalendar();
   });
 
-  document.getElementById('calNext').addEventListener('click', () => {
+  calNext.addEventListener('click', () => {
     currentMonth = new Date(currentMonth.getFullYear(), currentMonth.getMonth() + 1, 1);
     renderCalendar();
   });
@@ -628,7 +641,7 @@ $active = '';
     return keys;
   }
 
-  document.querySelector('.tenant-reserve-form').addEventListener('submit', (event) => {
+  reserveForm.addEventListener('submit', (event) => {
     if (!reserveRoomId.value) {
       alert('Selecciona una habitación.');
       event.preventDefault();
@@ -674,6 +687,7 @@ $active = '';
   });
 
       renderCalendar();
+  })();
     </script>
   </body>
 </html>

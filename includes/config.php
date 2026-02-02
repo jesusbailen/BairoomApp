@@ -21,3 +21,15 @@ function bairoom_url(string $path): string
   }
   return $base . '/' . $path;
 }
+
+function bairoom_absolute_url(string $path): string
+{
+  $envBase = getenv('BAIROOM_BASE_URL') ?: '';
+  if ($envBase !== '') {
+    return rtrim($envBase, '/') . '/' . ltrim($path, '/');
+  }
+  $https = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+  $scheme = $https ? 'https' : 'http';
+  $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+  return $scheme . '://' . $host . bairoom_url($path);
+}

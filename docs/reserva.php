@@ -53,18 +53,18 @@ $pdf->addLine('Nombre: ' . $reserva['inquilino'], 12, 'dark');
 $pdf->addSpacer(1);
 
 $pdf->addLine('Detalles de la estancia', 13, 'accent');
-$pdf->addLine('Habitación: ' . $reserva['habitacion'] . ' (' . $reserva['tipo'] . ')', 12, 'dark');
-$pdf->addLine('Propiedad: ' . $reserva['propiedad'] . ' · ' . $reserva['ciudad'], 12, 'dark');
+$pdf->addLine('HabitaciÃ³n: ' . $reserva['habitacion'] . ' (' . $reserva['tipo'] . ')', 12, 'dark');
+$pdf->addLine('Propiedad: ' . $reserva['propiedad'] . ' ï¿½ ' . $reserva['ciudad'], 12, 'dark');
 $pdf->addLine('Entrada: ' . $inicio->format('d/m/Y'), 12, 'dark');
 $pdf->addLine('Salida: ' . $fin->format('d/m/Y'), 12, 'dark');
 $pdf->addLine('Noches: ' . $noches, 12, 'dark');
 $pdf->addSpacer(1);
 
 $pdf->addLine('Resumen de pago', 13, 'accent');
-$pdf->addLine('Precio por noche: ' . number_format($precioNoche, 2) . ' €', 12, 'dark');
-$pdf->addLine('Subtotal alojamiento: ' . number_format($subtotal, 2) . ' €', 12, 'dark');
-$pdf->addLine('Tasa turística: ' . number_format($totalTasa, 2) . ' €', 12, 'dark');
-$pdf->addLine('Total pagado: ' . number_format($total, 2) . ' €', 12, 'success');
+$pdf->addLine('Precio por noche: ' . number_format($precioNoche, 2) . ' ï¿½', 12, 'dark');
+$pdf->addLine('Subtotal alojamiento: ' . number_format($subtotal, 2) . ' ï¿½', 12, 'dark');
+$pdf->addLine('Tasa turÃ­stica: ' . number_format($totalTasa, 2) . ' ï¿½', 12, 'dark');
+$pdf->addLine('Total pagado: ' . number_format($total, 2) . ' ï¿½', 12, 'success');
 $pdf->addSpacer(1);
 
 $pdf->addLine('Estado: Reserva confirmada y pagada.', 12, 'muted');
@@ -74,6 +74,3 @@ if (ob_get_length()) {
   ob_clean();
 }
 $pdf->output($filename);
-exit;
-
-
